@@ -1,5 +1,5 @@
-CREATE schema `epl_database`;
-USE `epl_database`;
+CREATE schema `epl`;
+USE `epl`;
 
 -- Team Table
 CREATE TABLE Team (
