@@ -18,7 +18,6 @@ function Dropdowns({ handleDropdownChange, months, teams }) {
 
     return (
         <div className='Dropdown'>
-            {console.log(months)}
             <select value={selectedMonth} onChange={handleMonthChange}>
                 {months.map((month, index) => (
                     <option key={index} value={month}>

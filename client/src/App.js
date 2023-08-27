@@ -2,9 +2,10 @@ import './App.css';
 
 import React, { useState, useEffect } from 'react';
 import Dropdowns from './components/Dropdowns';
-// import MatchTable from './MatchTable';
+import MatchTable from './components/MatchTable';
 // import MatchDetails from './MatchDetails';
 
+// API URL from .env file
 const apiUrl = process.env.REACT_APP_API_URL;
 
 function App() {
@@ -23,18 +24,17 @@ function App() {
         fetchDropdownData();
     }, []);
 
+    // Fetch matches
     const fetchMatches = async (team, month) => {
-        // Fetch initial matches
         const matchesURL = `${apiUrl}/matches?team=${team}&monthYear=${month}`;
-        console.log(matchesURL);
         const response = await fetch(matchesURL);
         const data = await response.json();
 
         setMatches(data);
     };
 
+    // Fetch dropdown data from API
     const fetchDropdownData = async () => {
-        // Fetch dropdown data from API
         try {
             const response = await fetch(`${apiUrl}/dropdowns`);
             const data = await response.json();
@@ -59,9 +59,11 @@ function App() {
 
     const handleMatchClick = async (matchId) => {
         // Fetch details of a specific match
-        const response = await fetch(`/api/match/${matchId}`);
+        console.log(` Match clicked: ${matchId}`)
+        const response = await fetch(`${apiUrl}/matches/${matchId}`);
         const data = await response.json();
         setSelectedMatch(data);
+        console.log(data)
     };
 
     return (
@@ -71,11 +73,11 @@ function App() {
                 months={dropdownData.months}
                 teams={dropdownData.teams}
             />
-            {/* <MatchTable
+            <MatchTable
                 matches={matches}
                 onMatchClick={handleMatchClick}
             />
-            {selectedMatch && (
+            {/* {selectedMatch && (
                 <MatchDetails
                     match={selectedMatch}
                 />
