@@ -1,0 +1,42 @@
+.table-header {
+  font-weight: bold;
+  text-align: center;
+  border: 3px solid black;
+  margin-bottom: 10px;
+}
+
+.match-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.match-table > table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 90%;
+}
+
+.match-table > thead {
+  border: 4px solid black;
+}
+
+/* Add styles for table rows */
+.table-row {
+  border: 2px solid black;
+  padding: 6px;
+  text-align: center;
+}
+
+/* Add styles for table cells */
+.table-row > td {
+  padding: 3px; /* Add padding to cells */
+  vertical-align: middle; /* Center text vertically */
+}
+
+.load-more-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

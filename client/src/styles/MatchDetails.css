@@ -1,0 +1,34 @@
+.match-section-container {
+  display: flex;
+  flex-direction: row; /* Stack items vertically */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; /* Center items horizontally */
+}
+
+.match-section {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  padding: 30px;
+  margin: 30px;
+  border-width: 2;
+  border-color: black;
+  border-style: solid;
+  border-radius: 40px;
+  width: 170px;
+  height: 170px;
+}
+
+.match-section h3 {
+  height: 50px;
+  text-align: center;
+}
+
+.match-section-info {
+  flex-direction: row;
+}
+
+.match-details {
+  margin: 60px;
+}

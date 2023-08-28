@@ -3,7 +3,8 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import Dropdowns from './components/Dropdowns';
 import MatchTable from './components/MatchTable';
-// import MatchDetails from './MatchDetails';
+import MatchDetails from './components/MatchDetails';
+import './App.css';
 
 // API URL from .env file
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -15,6 +16,7 @@ function App() {
         months: [],
         teams: [],
     });
+    const [showMatchDetails, setShowMatchDetails] = useState(false);
 
     useEffect(() => {
         // Fetch matches when component mounts
@@ -59,29 +61,40 @@ function App() {
 
     const handleMatchClick = async (matchId) => {
         // Fetch details of a specific match
-        console.log(` Match clicked: ${matchId}`)
+        console.log(` Match clicked: ${matchId}`);
         const response = await fetch(`${apiUrl}/matches/${matchId}`);
         const data = await response.json();
         setSelectedMatch(data);
-        console.log(data)
+        setShowMatchDetails(true);
+        console.log(data);
+    };
+
+    const handleBackClick = () => {
+        setSelectedMatch(null);
+        setShowMatchDetails(false);
     };
 
     return (
-        <div className="App">
-            <Dropdowns
-                handleDropdownChange={handleDropdownChange}
-                months={dropdownData.months}
-                teams={dropdownData.teams}
-            />
-            <MatchTable
-                matches={matches}
-                onMatchClick={handleMatchClick}
-            />
-            {/* {selectedMatch && (
+        <div className="app">
+
+            {!showMatchDetails && (
+                <div className='dropdown-and-table'>
+                    <Dropdowns
+                        handleDropdownChange={handleDropdownChange}
+                        months={dropdownData.months}
+                        teams={dropdownData.teams}
+                    />
+                    <MatchTable
+                        matches={matches}
+                        onMatchClick={handleMatchClick}
+                    />
+                </div>)}
+            {showMatchDetails && (
                 <MatchDetails
                     match={selectedMatch}
+                    onBackClick={handleBackClick}
                 />
-            )} */}
+            )}
         </div>
     );
 }

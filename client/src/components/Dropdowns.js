@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/Dropdowns.css';
 
 function Dropdowns({ handleDropdownChange, months, teams }) {
     const [selectedMonth, setSelectedMonth] = useState('All Months');
@@ -17,7 +18,7 @@ function Dropdowns({ handleDropdownChange, months, teams }) {
     };
 
     return (
-        <div className='Dropdown'>
+        <div className='dropdown'>
             <select value={selectedMonth} onChange={handleMonthChange}>
                 {months.map((month, index) => (
                     <option key={index} value={month}>
