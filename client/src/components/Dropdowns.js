@@ -6,15 +6,15 @@ function Dropdowns({ handleDropdownChange, months, teams }) {
     const [selectedTeam, setSelectedTeam] = useState('All Teams');
 
     const handleMonthChange = (event) => {
-        const selectedMonth = event.target.value;
-        setSelectedMonth(selectedMonth);
-        handleDropdownChange(selectedMonth, selectedTeam);
+        const month = event.target.value;
+        setSelectedMonth(month);
+        handleDropdownChange(month, selectedTeam);
     };
 
     const handleTeamChange = (event) => {
-        const selectedTeam = event.target.value;
-        setSelectedTeam(selectedTeam);
-        handleDropdownChange(selectedMonth, selectedTeam);
+        const team = event.target.value;
+        setSelectedTeam(team);
+        handleDropdownChange(selectedMonth, team);
     };
 
     return (
@@ -33,7 +33,7 @@ function Dropdowns({ handleDropdownChange, months, teams }) {
                         {team}
                     </option>
                 ))}
-            </select> 
+            </select>
         </div>
     );
 }
